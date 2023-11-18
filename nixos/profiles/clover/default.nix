@@ -21,6 +21,7 @@ in {
       inherit inputs;
     };
     modules = configImports ++ [
+      ../hardware/hardware-configuration.nix
       /desktop.nix
       {
         boot = {

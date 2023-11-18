@@ -5,8 +5,6 @@
 # General System Settings
 
     system.stateVersion = "23.11";
-    musnix.enable = true;
-    musnix.alsaSeq.enable = true;
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
 # System Configuration
@@ -34,8 +32,7 @@
     nix.gc = {
         automatic = true;
         persistent = true; 
-        dates = "20:00:00";
-        options = "--delete-generations 1d"; };
+        options = "--delete-generations 7d"; };
 
 # Users 
 

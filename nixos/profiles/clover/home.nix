@@ -1,6 +1,10 @@
 { user, ... }:
 
 {
+    imports = [
+        ../settings/git
+    ];
+
     home = {
         username = "${user}";
         homeDirectory = "/home/${user}";
@@ -9,4 +13,6 @@
 
       stateVersion = "23.11";
   };
+
+  programs.direnv.enable = true
 }

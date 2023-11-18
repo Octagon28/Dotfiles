@@ -1,18 +1,17 @@
 { inputs, config, pkgs, user, ... }:
 
 {
-    imports = [ /apps.nix ]; 
+    imports = [ 
+      /apps.nix
+      ../settings/kitty
+      ../settings/neovim
+      ../settings/easyeffects
+    ]; 
 
 # Settings
 
 	home.file.".config/hypr".source = ../settings/hypr;
-	home.file.".config/btop".source = ../settings/btop;
-	home.file.".config/kitty".source = ../settings/kitty;
-	home.file.".wallpapers".source = ../settings/.wallpapers;
-	home.file.".config/gtk-2.0".source = ../settings/gtk-2.0;
-	home.file.".config/gtk-3.0".source = ../settings/gtk-3.0;
-	home.file.".config/gtk-4.0".source = ../settings/gtk-4.0;
-	home.file.".config/easyeffects".source = ../settings/easyeffects;
+	home.file.".wallpapers".source = ../settings/wallpapers;
 	
 # Nixpkgs Settings
 
@@ -21,6 +20,48 @@
 			allowUnfree = true;
 			allowUnfreePredicate = (_: true);
 			permittedInsecurePackages = [ "figma-linux-0.10.0" ]; }; };
+
+
+
+qt = {
+  enable = true;
+  platformTheme = "gtk";
+};
+
+gtk = {
+  enable = true;
+  iconTheme = {
+    name = "WhiteSur-dark";
+    package = pkgs.whitesur-icon-theme;
+  };
+  theme = {
+    name = "Graphite-Dark";
+    package = pkgs.graphite-gtk-theme;
+  };
+
+  gtk3 = {
+    extraCOnfig = {
+      gtk-decoration-layout = "appmenu:none";
+      gtk-cursor-theme-name=Bibata-Modern-Classic;
+      gtk-cursor-theme-size=40;
+      gtk-font-name=Noto Sans,  10
+      gtk-toolbar-style=GTK_TOOLBAR_ICONS;
+      gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR;
+      gtk-button-images=0;
+      gtk-menu-images=0;
+      gtk-enable-event-sounds=1;
+      gtk-enable-input-feedback-sounds=0;
+      gtk-xft-antialias=1;
+      gtk-xft-hinting=1;
+      gtk-xft-hintstyle=hintfull;
+      gtk-xft-rgba=rgb;
+      gtk-application-prefer-dark-theme=1;
+    };
+  };
+
+ gtk4.extraConfig.gtk-decoration-layout = "appmenu:none";
+};
+
 
 # Nushell
 
@@ -67,24 +108,5 @@
     };
    };
 };
-
-	programs.neovim = {
-		enable = true;
-		defaultEditor = true;
-		viAlias = true;
-		vimAlias = true;
-		extraConfig = ''
-			set clipboard=unnamedplus
-			set number relativenumber
-			set shiftwidth=4
-			set tabstop=4
-			set expandtab
-			filetype plugin indent on
-			set autoindent
-			set ttyfast
-			'';
-	};
-
-	programs.home-manager.enable = true;
 	
 }

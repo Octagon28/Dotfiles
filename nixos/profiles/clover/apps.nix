@@ -120,6 +120,7 @@
 # Themes
 
     bibata-cursors
+    graphite-gtk-theme
     whitesur-icon-theme
 
 # Fonts

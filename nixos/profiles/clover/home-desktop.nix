@@ -1,18 +1,18 @@
 { inputs, config, pkgs, user, ... }:
 
 {
-    imports = [ ./apps.nix ]; 
+    imports = [ /apps.nix ]; 
 
-# Dotfiles
+# Settings
 
-	home.file.".config/hypr".source = ../dotfiles/hypr;
-	home.file.".config/btop".source = ../dotfiles/btop;
-	home.file.".config/kitty".source = ../dotfiles/kitty;
-	home.file.".wallpapers".source = ../dotfiles/.wallpapers;
-	home.file.".config/gtk-2.0".source = ../dotfiles/gtk-2.0;
-	home.file.".config/gtk-3.0".source = ../dotfiles/gtk-3.0;
-	home.file.".config/gtk-4.0".source = ../dotfiles/gtk-4.0;
-	home.file.".config/easyeffects".source = ../dotfiles/easyeffects;
+	home.file.".config/hypr".source = ../settings/hypr;
+	home.file.".config/btop".source = ../settings/btop;
+	home.file.".config/kitty".source = ../settings/kitty;
+	home.file.".wallpapers".source = ../settings/.wallpapers;
+	home.file.".config/gtk-2.0".source = ../settings/gtk-2.0;
+	home.file.".config/gtk-3.0".source = ../settings/gtk-3.0;
+	home.file.".config/gtk-4.0".source = ../settings/gtk-4.0;
+	home.file.".config/easyeffects".source = ../settings/easyeffects;
 	
 # Nixpkgs Settings
 

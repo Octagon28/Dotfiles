@@ -9,7 +9,7 @@ let
 
   hmImports = [ (import /home.nix) ];
 
-  desktopHmImports = hmImports ++ [ (import ./home-desktop.nix) ];
+  desktopHmImports = hmImports ++ [ (import /home-desktop.nix) ];
 
   hmArgs = { inherit user configDir; };
 
@@ -21,7 +21,6 @@ in {
       inherit inputs;
     };
     modules = configImports ++ [
-      inputs.musnix.nixosModules.musnix
       /desktop.nix
       {
         boot = {
@@ -59,9 +58,6 @@ in {
         home-manager = {
           useUserPackages = true;
           extraSpecialArgs = hmArgs;
-          users.${user} = {
-            imports = desktopHmImports ++ [ (import ./clover/home.nix) ];
-          };
         };
       }
     ];

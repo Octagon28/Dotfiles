@@ -1,7 +1,0 @@
-{ ... }:
-
-{
-  imports = [
-    (import ./apps.nix)
-  ];
-}
